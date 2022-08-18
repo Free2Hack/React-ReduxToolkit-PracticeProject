@@ -2,10 +2,14 @@
 
 .footer{
     background-color: $secondary-color;
-    height: 72px;
+    height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: $font-primary;
+    font-size: 14px;
+    position: relative;
+    bottom:0;
+    width: 100%;
 }
