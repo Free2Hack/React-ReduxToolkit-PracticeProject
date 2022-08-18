@@ -13,12 +13,13 @@ const Header = () => {
     e.preventDefault();
     dispatch(movieApi(searchData))
     dispatch(showsApi(searchData))
+    navigate('/',{state:{searchData:searchData}})    
     setSearchData("")
   }
   return (
     <div className="header">
       <div className="logo">
-        <Link to="/">Movie App</Link>
+        <a href="/">Movie App</a>
       </div>
       <div className="search-bar">
         <form onSubmit={handleSubmit}>
