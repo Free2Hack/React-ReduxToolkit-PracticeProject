@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { movieOrShowDetail, clearImdbData } from "../../features/MovieSlice";
 import "./MovieDetail.scss";
+import {BounceLoader,BarLoader,BeatLoader} from 'react-spinners'
 
 const MovieDetail = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const MovieDetail = () => {
   return (
     <div className="movie-section">
       {Object.keys(detail).length === 0 ? (
-        <div>...Loading</div>
+        <div><br/><BeatLoader loading size={"24px"} color="white" /></div>
       ) : (
         <>
           <div className="section-left">
