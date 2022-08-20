@@ -9,6 +9,23 @@ justify-content: space-between;
 align-items: center;
 }
 
+.Login{
+    button{
+        border: none;
+        background-color: $secondary-color;
+        color: $font-secondary;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.25s;
+        font-size: 18px;
+    }
+    
+    :hover{
+        color: $font-primary;
+        text-shadow: 0px 0px 5px $font-primary;
+    }
+}
+
 .logo{
     font-size: 20px;
     color:$font-primary;

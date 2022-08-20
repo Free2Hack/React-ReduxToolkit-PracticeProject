@@ -6,21 +6,26 @@ import MovieDetail from "./component/MovieDetail/MovieDetail";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
 import PageNotFound from "./component/PagenotFound/Pagenotfound";
+import Login from "./component/Login/Login";
+import { useSelector } from "react-redux";
 
 function App() {
+  const data = useSelector((state) => state.login.login);
   return (
     <div className="app">
       <BrowserRouter>
         <Header></Header>
-
         <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/movie/:imdbID" element={<MovieDetail />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+          {data ? (
+            <Login />
+          ) : (
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/movie/:imdbID" element={<MovieDetail />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          )}
         </div>
-
         <Footer></Footer>
       </BrowserRouter>
     </div>

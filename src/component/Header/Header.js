@@ -4,10 +4,13 @@ import { Link,useNavigate } from "react-router-dom";
 import "./Header.scss";
 import { movieApi,showsApi } from "../../features/MovieSlice";
 import { useDispatch } from "react-redux";
+import { loginAction } from "../../features/LoginSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
+  const [showModal,setShowModal]=useState(false)
   const [searchData,setSearchData]=useState('')
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -16,6 +19,10 @@ const Header = () => {
     navigate('/',{state:{searchData:searchData}})    
     setSearchData("")
   }
+  const handleLoginClick=()=>{
+   dispatch(loginAction())
+  }
+  const username=useSelector(state=>state.login.username)
   return (
     <div className="header">
       <div className="logo">
@@ -29,9 +36,12 @@ const Header = () => {
           </button>
         </form>
       </div>
-      <div className="user-image">
+      {/* <div className="user-image">
         <img src={logoImage} alt="Logo" />
-      </div>
+      </div> */}
+      {!username ?<div className="Login">
+        <button onClick={handleLoginClick}>Login</button>
+      </div>:<h3 style={{color:"white"}}>{username} <small>...logged In</small></h3>}
     </div>
   );
 };
